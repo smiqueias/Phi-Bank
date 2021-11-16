@@ -25,6 +25,25 @@ dependencies:
 
   cupertino_icons: ^1.0.2
 
+  ###
+  # Core
+  ###
+  intl: ^0.17.0
+  dio: ^4.0.1
+  timeline_tile: ^2.0.0
+  path_provider: ^2.0.6
+
+  ###
+  # State Management
+  ###
+  provider: ^6.0.1
+
+  ###
+  # Database & Storage
+  ###
+  hive: ^2.0.4
+  hive_flutter: ^1.1.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
