@@ -52,4 +52,6 @@ Aplicativo desenvolvido baseado num teste para o cargo de desenvolvedor mobile n
 <img src="https://i.imgur.com/fQ4gDA4.png" alt="Tela do App" width="300"/>
 <img src="https://i.imgur.com/DIMGaBY.png" alt="Tela do App" width="300"/>
 <img src="https://i.imgur.com/D1PfDxw.png" alt="Tela do App" width="300"/>
+<img src="https://i.imgur.com/tQmMawG.jpg" alt="Tela do App" width="300"/>
+<img src="https://i.imgur.com/QH4W1A6.jpg" alt="Tela do App" width="300"/>
 </p>
