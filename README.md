@@ -44,6 +44,7 @@ Aplicativo desenvolvido baseado num teste para o cargo de desenvolvedor mobile n
 
 <p float="left">
 <img src="https://media.giphy.com/media/wUX7RcCRIkw4HtjImk/giphy.gif" alt="Demo do App" width="300"/>
+<img src="https://media.giphy.com/media/OondgFb8mT9LsKzTP6/giphy.gif" alt="Demo do App" width="300"/>
 </p>
 
 ## 📱 Imagens
