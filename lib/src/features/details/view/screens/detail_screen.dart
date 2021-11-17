@@ -35,74 +35,92 @@ class _DetailScreenState extends State<DetailScreen> {
           icon: const Icon(Icons.arrow_back_ios),
         ),
       ),
-      body: Container(
-        margin: const EdgeInsets.only(top: 12),
-        child: Column(
-          children: [
-            const Center(
-              child: Text(
-                'Comprovante',
-                style: TextStyle(
-                  fontSize: 18,
-                  color: AppColors.black,
-                  fontWeight: FontWeight.bold,
+      body: SingleChildScrollView(
+        child: Container(
+          margin: const EdgeInsets.only(top: 12),
+          child: Column(
+            children: [
+              const Center(
+                child: Text(
+                  'Comprovante',
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: AppColors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(height: 18),
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal: 12.0),
-              height: 1,
-              color: AppColors.black.withOpacity(0.4),
-            ),
-            const SizedBox(height: 18),
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal: 12.0),
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    LabelComponent(
-                      label1: "Tipo de movimentação",
-                      label2: widget.detailModel!.description,
-                      size: size,
-                    ),
-                    const SizedBox(height: 40),
-                    LabelComponent(
-                      label1: "Valor",
-                      label2: widget.real.format(widget.detailModel!.amount),
-                      size: size,
-                    ),
-                    const SizedBox(height: 40),
-                    LabelComponent(
-                      label1: "Recebedor",
-                      label2: widget.detailModel!.to,
-                      size: size,
-                    ),
-                    const SizedBox(height: 40),
-                    LabelComponent(
-                      label1: "Instituição bancária",
-                      label2: widget.detailModel!.bankName,
-                      size: size,
-                    ),
-                    const SizedBox(height: 40),
-                    LabelComponent(
-                      label1: "Data/Hora",
-                      label2: widget.detailModel!.createdAt.dateFormatWithTime(),
-                      size: size,
-                    ),
-                    const SizedBox(height: 40),
-                    LabelComponent(
-                      label1: "Autentificação",
-                      label2: widget.detailModel!.authentication,
-                      size: size,
-                    ),
-                  ],
-                ),
+              const SizedBox(height: 18),
+              Container(
+                margin: const EdgeInsets.symmetric(horizontal: 12.0),
+                height: 1,
+                color: AppColors.black.withOpacity(0.4),
               ),
-            )
-          ],
+              const SizedBox(height: 18),
+              Container(
+                margin: const EdgeInsets.symmetric(horizontal: 12.0),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      LabelComponent(
+                        label1: "Tipo de movimentação",
+                        label2: widget.detailModel!.description,
+                        size: size,
+                      ),
+                      const SizedBox(height: 40),
+                      LabelComponent(
+                        label1: "Valor",
+                        label2: widget.real.format(widget.detailModel!.amount),
+                        size: size,
+                      ),
+                      const SizedBox(height: 40),
+                      LabelComponent(
+                        label1: "Recebedor",
+                        label2: widget.detailModel!.to,
+                        size: size,
+                      ),
+                      const SizedBox(height: 40),
+                      LabelComponent(
+                        label1: "Instituição bancária",
+                        label2: widget.detailModel!.bankName,
+                        size: size,
+                      ),
+                      const SizedBox(height: 40),
+                      LabelComponent(
+                        label1: "Data/Hora",
+                        label2: widget.detailModel!.createdAt.dateFormatWithTime(),
+                        size: size,
+                      ),
+                      const SizedBox(height: 40),
+                      LabelComponent(
+                        label1: "Autentificação",
+                        label2: widget.detailModel!.authentication,
+                        size: size,
+                      ),
+                      const SizedBox(height: 40),
+                      Center(
+                        child: ElevatedButton(
+                          onPressed: () => print("share"),
+                          child: const Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 64, vertical: 8),
+                            child: Text(
+                              "Compartilhar",
+                              style: TextStyle(color: AppColors.white, fontSize: 18),
+                            ),
+                          ),
+                          style: ElevatedButton.styleFrom(
+                            primary: AppColors.cyan,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
