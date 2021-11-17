@@ -38,7 +38,7 @@ Aplicativo desenvolvido baseado num teste para o cargo de desenvolvedor mobile n
     ✅ Tratamento de erro e de carregamento.
     ✅ Ao tocar no ícone de olho do saldo, o mesmo é escondido.
     ✅ Ao tocar em um item do extrato é aberta uma tela de detalhes.
-    ⚙️ Ao tocar no botão de compartilhar, é compartilhada a imagem da área de informações do comprovante abrindo o componente de compartilhamento (sharing) padrão do Android.
+    ✅ Ao tocar no botão de compartilhar, é compartilhada a imagem da área de informações do comprovante abrindo o componente de compartilhamento (sharing) padrão do Android.
 
 ## 🎥 Demo
 
