@@ -1,16 +1,55 @@
-# phi_mobile_challenge
+# <p align="center"> Phi Bank
 
-A new Flutter project.
+<p align="center">
+<a href="https://www.linkedin.com/in/saulo-nascimento-b6050b1b3/"><img src="https://img.icons8.com/android/24/000000/linkedin.png" alt="linkedin"></a>
+<a href="https://www.instagram.com/smiqueias_/"><img src="https://img.icons8.com/android/24/000000/instagram.png" alt="instagram"></a>
+</p>
+Aplicativo desenvolvido baseado num teste para o cargo de desenvolvedor mobile na empresa Phi. (Não participei do processo seletivo, implementei o aplicativo apenas para fins de estudo)
 
-## Getting Started
+## 📁 Arquitetura do projeto
 
-This project is a starting point for a Flutter application.
+```
+  src
+    ├───core
+    │   ├───components
+    │   ├───local-storage
+    │   └───service
+    ├───features
+    │   └───example-feature
+    │       ├───models
+    │       ├───repositories
+    │       ├───router
+    │       ├───view
+    │       │   ├───components
+    │       │   ├───container
+    │       │   └───screens
+    │       └───view-model
+    └───utils
+        ├───constants
+        └───extensions
 
-A few resources to get you started if this is your first Flutter project:
+```
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## ⚙️ Funcionalidades
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+    ✅ Buscar saldo
+    ✅ Buscar lista de itens do extrato.
+    ✅ Scroll infinito (10 itens por request).
+    ✅ Tratamento de erro e de carregamento.
+    ✅ Ao tocar no ícone de olho do saldo, o mesmo é escondido.
+    ✅ Ao tocar em um item do extrato é aberta uma tela de detalhes.
+    ⚙️ Ao tocar no botão de compartilhar, é compartilhada a imagem da área de informações do comprovante abrindo o componente de compartilhamento (sharing) padrão do Android.
+
+## 🎥 Demo
+
+<p float="left">
+<img src="" alt="Demo do App" width="300"/>
+</p>
+
+## 📱 Imagens
+
+<p float="left">
+<img src="https://i.imgur.com/fQ4gDA4.png" alt="Tela do App" width="300"/>
+<img src="https://i.imgur.com/DIMGaBY.png" alt="Tela do App" width="300"/>
+<img src="https://i.imgur.com/D1PfDxw.png" alt="Tela do App" width="300"/>
+</p>
