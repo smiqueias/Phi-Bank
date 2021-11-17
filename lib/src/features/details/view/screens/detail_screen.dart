@@ -1,22 +1,25 @@
+import 'dart:io';
+import 'dart:typed_data';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:phi_mobile_challenge/src/core/app_colors.dart';
 import 'package:phi_mobile_challenge/src/features/details/model/detail_model.dart';
-import 'package:phi_mobile_challenge/src/features/details/view/components/label_component.dart';
-import '../../../../utils/extensions/string_extension.dart';
+import 'package:phi_mobile_challenge/src/features/details/view/components/proof_component.dart';
+import 'package:screenshot/screenshot.dart';
+import 'package:share_plus/share_plus.dart';
 
 class DetailScreen extends StatefulWidget {
   final DetailModel? detailModel;
 
-  final NumberFormat real = NumberFormat.currency(locale: "pt_BR", name: "R\$");
-
-  DetailScreen({Key? key, required this.detailModel}) : super(key: key);
+  const DetailScreen({Key? key, required this.detailModel}) : super(key: key);
 
   @override
   State<DetailScreen> createState() => _DetailScreenState();
 }
 
 class _DetailScreenState extends State<DetailScreen> {
+  final ScreenshotController _screenshotController = ScreenshotController();
+
   @override
   void initState() {
     super.initState();
@@ -40,89 +43,45 @@ class _DetailScreenState extends State<DetailScreen> {
           margin: const EdgeInsets.only(top: 12),
           child: Column(
             children: [
-              const Center(
-                child: Text(
-                  'Comprovante',
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: AppColors.black,
-                    fontWeight: FontWeight.bold,
+              Screenshot(
+                controller: _screenshotController,
+                child: Container(
+                  color: AppColors.white,
+                  child: ProofComponent(
+                    detailModel: widget.detailModel!,
+                    size: size,
                   ),
                 ),
               ),
-              const SizedBox(height: 18),
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 12.0),
-                height: 1,
-                color: AppColors.black.withOpacity(0.4),
-              ),
-              const SizedBox(height: 18),
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 12.0),
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      LabelComponent(
-                        label1: "Tipo de movimentação",
-                        label2: widget.detailModel!.description,
-                        size: size,
-                      ),
-                      const SizedBox(height: 40),
-                      LabelComponent(
-                        label1: "Valor",
-                        label2: widget.real.format(widget.detailModel!.amount),
-                        size: size,
-                      ),
-                      const SizedBox(height: 40),
-                      LabelComponent(
-                        label1: "Recebedor",
-                        label2: widget.detailModel!.to,
-                        size: size,
-                      ),
-                      const SizedBox(height: 40),
-                      LabelComponent(
-                        label1: "Instituição bancária",
-                        label2: widget.detailModel!.bankName,
-                        size: size,
-                      ),
-                      const SizedBox(height: 40),
-                      LabelComponent(
-                        label1: "Data/Hora",
-                        label2: widget.detailModel!.createdAt.dateFormatWithTime(),
-                        size: size,
-                      ),
-                      const SizedBox(height: 40),
-                      LabelComponent(
-                        label1: "Autentificação",
-                        label2: widget.detailModel!.authentication,
-                        size: size,
-                      ),
-                      const SizedBox(height: 40),
-                      Center(
-                        child: ElevatedButton(
-                          onPressed: () => print("share"),
-                          child: const Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 64, vertical: 8),
-                            child: Text(
-                              "Compartilhar",
-                              style: TextStyle(color: AppColors.white, fontSize: 18),
-                            ),
-                          ),
-                          style: ElevatedButton.styleFrom(
-                            primary: AppColors.cyan,
-                          ),
-                        ),
-                      ),
-                    ],
+              Center(
+                child: ElevatedButton(
+                  onPressed: () async {
+                    final proof = await _screenshotController.capture();
+                    _saveAndShare(proof);
+                  },
+                  child: const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 64, vertical: 8),
+                    child: Text(
+                      "Compartilhar",
+                      style: TextStyle(color: AppColors.white, fontSize: 18),
+                    ),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    primary: AppColors.cyan,
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ),
       ),
     );
+  }
+
+  Future _saveAndShare(Uint8List? proof) async {
+    final directory = await getApplicationDocumentsDirectory();
+    final image = File('${directory.path}/proof.png');
+    image.writeAsBytesSync(proof!);
+    await Share.shareFiles([image.path]);
   }
 }
