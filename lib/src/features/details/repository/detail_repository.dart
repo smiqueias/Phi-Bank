@@ -1,4 +1,4 @@
-import 'package:phi_mobile_challenge/src/core/service/dio_service.dart';
+import 'package:phi_mobile_challenge/src/core/services/dio_service.dart';
 import 'package:phi_mobile_challenge/src/features/details/model/detail_model.dart';
 import 'package:phi_mobile_challenge/src/utils/log.dart';
 

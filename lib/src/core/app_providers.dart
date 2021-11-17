@@ -1,4 +1,4 @@
-import 'package:phi_mobile_challenge/src/core/service/dio_service.dart';
+import 'package:phi_mobile_challenge/src/core/services/dio_service.dart';
 import 'package:phi_mobile_challenge/src/features/details/repository/detail_repository.dart';
 import 'package:phi_mobile_challenge/src/features/details/view-model/detail_vm.dart';
 import 'package:phi_mobile_challenge/src/features/statement/repositories/user_balance_repository.dart';

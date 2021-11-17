@@ -53,9 +53,7 @@ class _UserAmountComponentState extends State<UserAmountComponent> {
                       _showAmount = !_showAmount;
                     });
                   },
-                  icon: Hive.box(amountVisibilityBox).get("visibility")
-                      ? const Icon(Icons.visibility_off)
-                      : const Icon(Icons.visibility),
+                  icon: _showAmount ? const Icon(Icons.visibility_off) : const Icon(Icons.visibility),
                   iconSize: 22,
                   color: AppColors.cyan,
                 )
@@ -66,7 +64,7 @@ class _UserAmountComponentState extends State<UserAmountComponent> {
             padding: const EdgeInsets.symmetric(horizontal: 12),
             child: Consumer<IUserBalanceVM>(
               builder: (context, userBalanceVM, child) {
-                return Hive.box(amountVisibilityBox).get("visibility")
+                return _showAmount
                     ? Text(
                         real.format(userBalanceVM.userBalance?.amount ?? 0),
                         style: const TextStyle(
