@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
 import 'package:intl/intl.dart';
 import 'package:phi_mobile_challenge/src/core/app_colors.dart';
 import 'package:phi_mobile_challenge/src/features/statement/view-model/user_balance_vm.dart';
-import 'package:phi_mobile_challenge/src/utils/constants/boxes.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class UserAmountComponent extends StatefulWidget {
   final Size size;
@@ -18,17 +17,24 @@ class UserAmountComponent extends StatefulWidget {
 class _UserAmountComponentState extends State<UserAmountComponent> {
   final NumberFormat real = NumberFormat.currency(locale: "pt_BR", name: "R\$");
 
-  bool _showAmount = true;
+  bool _showAmount = false;
+
+  _getVisibility() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _showAmount = prefs.getBool("visibility") ?? false;
+    });
+  }
 
   @override
   void initState() {
-    _showAmount = Hive.box(amountVisibilityBox).get("visibility");
+    _getVisibility();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    Hive.box(amountVisibilityBox).put('visibility', _showAmount);
+    _saveVisibility(_showAmount);
     return Container(
       height: widget.size.height * 0.12,
       width: widget.size.width,
@@ -86,4 +92,9 @@ class _UserAmountComponentState extends State<UserAmountComponent> {
       ),
     );
   }
+}
+
+_saveVisibility(bool visibility) async {
+  final SharedPreferences prefs = await SharedPreferences.getInstance();
+  await prefs.setBool('visibility', visibility);
 }
